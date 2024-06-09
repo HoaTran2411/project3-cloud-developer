@@ -1,10 +1,11 @@
 version: 2.1
 
 jobs:
-  step:            
+  build:            
     docker:         
       - image: cimg/base:current
-    build:
+    working_directory: ~/app
+    steps:
       - checkout
       - setup_remote_docker:
           version: 20.10.14  
@@ -38,4 +39,4 @@ jobs:
 workflows:
   default:
     jobs:
-      - step
+      - build
